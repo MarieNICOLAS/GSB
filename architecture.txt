@@ -41,8 +41,8 @@ GSB/
             footer/
             header/
         css/
-        template/
-            layout.php
-            style.css
+    template/
+        layout.php
+        style.css
     
 
