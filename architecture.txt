@@ -1,0 +1,48 @@
+GSB/
+    index.php
+    composer.json
+    vendor/
+        composer/
+        autoloader.php
+    
+    config/
+        config.php
+    
+    src/
+        main.php
+        router.php
+        controller/
+            MedecinController.php
+            RapportController.php
+            VisiteurController.php
+        
+        model/
+            Medecin.php
+            Visiteur.php
+            Rapport.php
+    
+    view/
+        viewAccueil.php
+        medecinView/
+            viewAjouterMedecin.php
+            viewAllMedecin.php
+            viewEnvoyerMail.php
+            viewInformationMedecin.php
+            viewRechercherMedecin.php
+        rapportView/
+            viewCreerRapport.php
+            viewModifierRapport.php
+            viewSelectionnerRapport.php
+        visiteurView/
+            viewConnexionVisiteur.php
+            viewInscriptionVisiteur.php
+            viewMonCompte.php
+        componants/
+            footer/
+            header/
+        css/
+        template/
+            layout.php
+            style.css
+    
+

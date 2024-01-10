@@ -5,41 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mon compte</title>
-    <style>
-        /* Ajoutez ici votre CSS */
-        body {
-            font-family: Arial, sans-serif;
-        }
-        .menu {
-            display: flex;
-            justify-content: space-around;
-            background-color: #f0f0f0;
-            padding: 10px;
-        }
-        .menu a {
-            text-decoration: none;
-            color: #000;
-        }
-        .content {
-            display: flex;
-            justify-content: space-around;
-            padding: 20px;
-        }
-        .content div {
-            padding: 10px;
-            border: 1px solid #000;
-        }
-        .content div:hover {
-            background-color: #e0e0e0;
-        }
-    </style>
 </head>
 <body>
-    <!-- <div class="menu">
-        <a href="/">Accueil</a>
-        <a href="/connexion">Connexion</a>
-        <a href="/monCompte">Mon compte</a>
-    </div> -->
     <h1>Mon compte</h1>
     <div class="content">
         <div class="medecins">
