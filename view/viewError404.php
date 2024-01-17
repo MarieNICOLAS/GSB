@@ -1,4 +1,2 @@
-<?php
-
-echo "Erreur 404";
-die;
+<h1>Erreur 404</h1>
+<p>Page introuvable.</p>
