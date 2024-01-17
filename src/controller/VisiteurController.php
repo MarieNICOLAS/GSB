@@ -36,12 +36,15 @@ class VisiteurController{
 
             if (Visiteur::authenticate($login, $motDePasse))
             {
+                $_SESSION['user_logged_in'] = true;
+                $_SESSION['user_login'] = $login;
                 header('Location: /monCompte');
+                exit;
             }
             else
             {
-                echo "Identifiants incorrects.";
-                header('Location: /confirmation-inscription');
+                header('Location: /connexion');
+                exit;
             }
         }
     }
