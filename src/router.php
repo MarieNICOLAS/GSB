@@ -18,11 +18,12 @@ class Router
             case '':
             case 'index':
             case 'accueil':
+                $title = 'Accueil | GSB';
                 require __DIR__ . '/../view/viewAccueil.php';
                 break;
         
             case 'inscription-visiteur':
-                $title = 'Formulaire d\'Inscription';
+                $title = 'Formulaire d\'Inscription | GSB';
                 require __DIR__ . '/../view/visiteurView/inscriptionVisiteur.php';
                 break;
             
@@ -32,10 +33,12 @@ class Router
                 break;
             
             case 'confirmation-inscription':
+                $title = 'Confirmation inscription | GSB'; 
                 require __DIR__ . '/../view/visiteurView/confirmationInscription.php';
                 break;
 
             case 'connexion':
+                $title = 'Connexion | GSB';
                 require __DIR__ . '/../view/visiteurView/connexionVisiteur.php';
                 break;
             
@@ -44,15 +47,26 @@ class Router
                 $visiteur->threatmentAuthenticate();
                 break;
             case 'monCompte':
+                $title = 'Mon Compte | GSB';
                 require __DIR__ . '/../view/visiteurView/monCompte.php';
                 break;
                 
             case 'ajouterMedecin':
+                $title = 'Ajouter Médecin | GSB';
                 require __DIR__ . '/../view/medecinView/viewAjouterMedecin.php';
+            
+            case 'traitement-inscription-medecin':
+                $medecin = new MedecinController();
+                $medecin->createMedecin();
+                break;
+                
             case 'liste-medecins':
-                require __DIR__ . '/../view/medecinView/viewAllMedecin.php';
+                $title = 'Liste des Médecins | GSB';
+                $medecinController = new MedecinController();
+                $medecinController->listMedecin();
                 break;
             default:
+                $title = 'Error 404 | GSB';
                 require __DIR__ . '/../view/viewError404.php';
                 break;
         }

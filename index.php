@@ -8,6 +8,7 @@
  * Author: Marie Nicolas <marie.nicolas@ensitech.eu>
  */
 
+session_start();
 #########################################
 # Local dependencies                    #
 #########################################

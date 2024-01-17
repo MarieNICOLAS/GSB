@@ -18,7 +18,6 @@ class Main
    */
     public function __construct()
     {
-        session_start();
         $this->pdo = Config::getInstance()->getConnection();
     }
 
