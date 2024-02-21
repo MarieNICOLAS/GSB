@@ -53,7 +53,7 @@ class Medecin{
 
     /**
      * Fonction pour retrouver tous les médecins
-     * @return array($tousLesMedecins)
+     * @return array($listMedecins)
      */
 
     public static function findAll()

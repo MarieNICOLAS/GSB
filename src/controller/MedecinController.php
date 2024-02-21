@@ -29,20 +29,19 @@ class MedecinController{
             header('Location: /liste-medecins');
             exit;
         }
-
-        //require __DIR__ . '/../../view/medecinView/viewAjouterMedecin.php';
     }
 
     /**
      * Affiche la liste de tous les médecins
      */
     public function listMedecin() {
+        $medecins = Medecin::findAll();
         require __DIR__ . '/../../view/medecinView/viewAllMedecin.php';
     }
 
     public function viewMedecin($id)
     {
-
+        
     }
 
     public function updateMedecin($id)

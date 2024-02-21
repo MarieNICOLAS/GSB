@@ -12,7 +12,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
         <h2>Médecins</h2>
         <p><a href="/ajouterMedecin">Ajouter un médecin</a></p>
         <p><a href="/rechercherMedecin">Rechercher médecin</a></p>
-        <p><a href="/tousLesMedecins">Tous les médecins</a></p>
+        <p><a href="/liste-medecins">Tous les médecins</a></p>
     </div>
     <div class="rapports">
         <h2>Rapports</h2>

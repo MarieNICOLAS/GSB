@@ -58,7 +58,7 @@ class Router
                 
             case 'ajouterMedecin':
                 require __DIR__ . '/../view/medecinView/viewAjouterMedecin.php';
-            
+                break;
             case 'traitement-inscription-medecin':
                 $medecin->createMedecin();
                 break;
