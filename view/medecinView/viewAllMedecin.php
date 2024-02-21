@@ -1,6 +1,6 @@
-<h1>Liste des Médecins</h1>
+<?php $title = 'Liste des Médecins | GSB'; ?>
 <ul>
-    <?php foreach ($listeMedecins as $medecin): ?>
+    <?php foreach ($medecin as $medecins): ?>
         <li><?php echo htmlspecialchars($medecin['nom']) . ' ' . htmlspecialchars($medecin['prenom']); ?></li>
     <?php endforeach; ?>
 </ul>

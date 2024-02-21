@@ -26,19 +26,18 @@ class MedecinController{
             $medecin = new Medecin($nom, $prenom, $adresse, $telephone, $email, $specialiteComplementaire, $departement);
             $medecin->createMedecin();
 
-            header('Location: viewAllMedecin.php');
+            header('Location: /liste-medecins');
             exit;
         }
 
-        require __DIR__ . '../../view/medecinView/viewAjouterMedecin.php';
+        //require __DIR__ . '/../../view/medecinView/viewAjouterMedecin.php';
     }
 
     /**
      * Affiche la liste de tous les médecins
      */
     public function listMedecin() {
-        $medecins = Medecin::findAll();
-        require __DIR__ . '../../view/medecinView/viewAllMedecin.php'; // Chemin vers la vue de la liste des médecins
+        require __DIR__ . '/../../view/medecinView/viewAllMedecin.php';
     }
 
     public function viewMedecin($id)

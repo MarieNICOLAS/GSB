@@ -23,7 +23,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
     <div class="monprofil">
         <h2>Mon profil</h2>
         <p><a href="/voirProfil">Mes informations</a></p>
-        <p><a href="/deconnexion">Me déconnecter</a></p>
+        <p><a href="/traitement-deconnexion">Me déconnecter</a></p>
     </div>
 </div>
 

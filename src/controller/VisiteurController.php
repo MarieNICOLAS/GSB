@@ -49,6 +49,13 @@ class VisiteurController{
         }
     }
 
+    public function deconnexionVisiteur()
+    {
+        Visiteur::logout();
+        header('Location: /accueil');
+        exit;
+    }
+
 
 
 }

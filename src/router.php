@@ -13,6 +13,10 @@ class Router
         $requestPath = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
         $request = trim($requestPath, '/');
         ob_start();
+
+        $visiteur = new VisiteurController();
+        $medecin = new MedecinController();
+
         switch ($request)
         {
             case '':
@@ -28,42 +32,39 @@ class Router
                 break;
             
             case 'traitement-inscription':
-                $visiteur = new VisiteurController();
                 $visiteur->createVisiteurController();
                 break;
             
             case 'confirmation-inscription':
-                $title = 'Confirmation inscription | GSB'; 
                 require __DIR__ . '/../view/visiteurView/confirmationInscription.php';
                 break;
 
             case 'connexion':
-                $title = 'Connexion | GSB';
                 require __DIR__ . '/../view/visiteurView/connexionVisiteur.php';
                 break;
             
             case 'traitement-connexion':
-                $visiteur = new VisiteurController();
                 $visiteur->threatmentAuthenticate();
                 break;
+            
+            case 'traitement-deconnexion':
+                $visiteur->deconnexionVisiteur();
+                break;
+
             case 'monCompte':
                 $title = 'Mon Compte | GSB';
                 require __DIR__ . '/../view/visiteurView/monCompte.php';
                 break;
                 
             case 'ajouterMedecin':
-                $title = 'Ajouter Médecin | GSB';
                 require __DIR__ . '/../view/medecinView/viewAjouterMedecin.php';
             
             case 'traitement-inscription-medecin':
-                $medecin = new MedecinController();
                 $medecin->createMedecin();
                 break;
                 
             case 'liste-medecins':
-                $title = 'Liste des Médecins | GSB';
-                $medecinController = new MedecinController();
-                $medecinController->listMedecin();
+                $medecin->listMedecin();
                 break;
             default:
                 $title = 'Error 404 | GSB';

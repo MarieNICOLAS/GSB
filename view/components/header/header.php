@@ -14,5 +14,8 @@
         <a href="/accueil">Accueil</a>
         <a href="/connexion">Connexion</a>
         <a href="/monCompte">Mon compte</a>
+        <?php if(isset($_SESSION['user_logged_in']) && $_SESSION['user_logged_in']): ?>
+            <a href="/traitement-deconnexion">Déconnexion</a>
+        <?php endif; ?>
     </nav>
 </header>
