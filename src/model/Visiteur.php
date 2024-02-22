@@ -42,7 +42,7 @@ class Visiteur{
      * Fonction création visiteur
      */
     public function createVisiteur(){
-        $pdo = Config::getInstance()->getConnection();
+        $pdo = \GSB\Main::getPDO();
         $sql = "INSERT INTO visiteur (nom, prenom, adresse, telephone, login, motDePasse, codePostal, ville, dateEmbauche) VALUES (:nom, :prenom, :adresse, :telephone, :login, :motDePasse, :codePostal, :ville, :dateEmbauche)";
         $stmt = $pdo->prepare($sql);
 
@@ -64,7 +64,7 @@ class Visiteur{
      */
     public static function authenticate(String $login, String $motDePasse)
     {
-        $pdo = Config::getInstance()->getConnection();
+        $pdo = \GSB\Main::getPDO();
         
         $sql = "SELECT login, motDePasse FROM visiteur WHERE login = :login AND motDePasse = :motDePasse";
         

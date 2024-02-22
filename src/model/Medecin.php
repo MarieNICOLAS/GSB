@@ -14,7 +14,6 @@ class Medecin{
     private $specialiteComplementaire;
 
     private $departement;
-    private $pdo;
 
     /**
      * Constructeur Médecin 
@@ -30,16 +29,16 @@ class Medecin{
         $this->email = $email;
         $this->specialiteComplementaire = $specialiteComplementaire;
         $this->departement = $departement;
-        $this->pdo = Config::getInstance()->getConnection();
     }
 
     /**
      * Function insérer un médecin dans la table 'medecin'  
      */
     public function createMedecin(){
+        $pdo = \GSB\Main::getPDO();
         $sql = "INSERT INTO medecin (nom, prenom, adresse, telephone, email, specialiteComplementaire, departement) 
                 VALUES (:nom, :prenom, :adresse, :telephone, :email, :specialiteComplementaire, :departement)";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->execute([
             'nom' => $this->nom,
             'prenom' => $this->prenom,
@@ -58,7 +57,7 @@ class Medecin{
 
     public static function findAll()
     {
-        $pdo = Config::getInstance()->getConnection();
+        $pdo = \GSB\Main::getPDO();
         $sql = "SELECT * FROM medecin";
         $stmt = $pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -68,10 +67,11 @@ class Medecin{
       * Fonction pour retrouver les médecins par leur id
       * @return array($idMedecin)
       */
-    public function findById($id)
+    public static function findById($id)
     {
+        $pdo = \GSB\Main::getPDO();
         $sql = "SELECT * FROM medecin WHERE id = :id";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->execute(['id' => $id]);
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
@@ -81,10 +81,11 @@ class Medecin{
      * @return array($nameMedecin)
      */
 
-    public function findByName($name)
+    public static function findByName($name)
     {
+        $pdo = \GSB\Main::getPDO();
         $sql = "SELECT * FROM medecin WHERE nom = :nom";
-        $stmt = $this->pdo->prepare($sql);
+        $stmt = $pdo->prepare($sql);
         $stmt->execute(['nom' => $name]);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
