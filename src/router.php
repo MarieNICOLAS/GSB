@@ -56,16 +56,32 @@ class Router
                 require __DIR__ . '/../view/visiteurView/monCompte.php';
                 break;
                 
-            case 'ajouterMedecin':
+            case 'ajouter_medecin':
                 require __DIR__ . '/../view/medecinView/viewAjouterMedecin.php';
                 break;
+
             case 'traitement-inscription-medecin':
                 $medecin->createMedecin();
                 break;
                 
-            case 'liste-medecins':
+            case 'liste_medecins':
                 $medecin->listMedecin();
                 break;
+            
+            case 'rechercher_medecin':
+                require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
+                break;
+
+            // case 'traitement_recherche_medecin':
+            //     $term = $_GET['search_term'];
+            //     var_dump($term);
+            //     $resultats = $medecin->searchMedecin($term);
+            //     var_dump($resultats);
+            //     echo json_encode($resultats);
+            //     break;
+                
+
+
             default:
                 $title = 'Error 404 | GSB';
                 require __DIR__ . '/../view/viewError404.php';

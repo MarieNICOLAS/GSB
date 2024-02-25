@@ -58,4 +58,23 @@ class MedecinController{
     {
 
     }
+    
+    // public function searchMedecin($nom)
+    // {
+    //     if ($_SERVER['REQUEST_METHOD'] === 'POST')
+    //     {
+    //         $nom = $_POST['nom'] ?? '';
+    //         if (isset($nom))
+    //         {
+    //             $medecins = [];
+    //             foreach ( as $medecins)
+    //             {
+
+    //                 Medecin::findByName($nom);
+    //             }
+
+    //         }
+    //     }
+    // }
+    
 }

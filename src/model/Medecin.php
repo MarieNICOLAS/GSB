@@ -78,26 +78,43 @@ class Medecin{
 
     /**
      * Fonction pour retrouver tous les médecins
-     * @return array($nameMedecin)
+     * 
      */
 
-    public static function findByName($name)
+    public static function findByName($nom)
     {
         $pdo = \GSB\Main::getPDO();
-        $sql = "SELECT * FROM medecin WHERE nom = :nom";
+        $nom = "%".$nom."%"; // Préparer le motif de recherche
+        $sql = "SELECT * FROM medecin WHERE nom LIKE ?";
         $stmt = $pdo->prepare($sql);
-        $stmt->execute(['nom' => $name]);
+        $stmt->bindValue(1, $nom); // 's' spécifie que le paramètre est une chaîne
+        $stmt->execute();
+        $medecins = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        
+        if ($medecins) {
+            return $medecins;
+        } else {
+            return null ;
+        }
+    }
+
+    public function updateMedecin($medecin_id)
+    {
+
+    }
+
+    public function deleteMedecin($medecin_id)
+    {
+
+    }
+
+    public static function findBySearchTerm($term)
+    {
+        $pdo = \GSB\Main::getPDO();
+        $sql = "SELECT * FROM medecin WHERE nom LIKE :term OR prenom LIKE :term";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['term' => '%' . $term . '%']);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public function updateMedecin($id, Medecin $medecin)
-    {
-
-    }
-
-    public function deleteMedecin($id)
-    {
-
     }
 
 

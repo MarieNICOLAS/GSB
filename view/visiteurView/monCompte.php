@@ -10,15 +10,15 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
 <div class="content">
     <div class="medecins">
         <h2>Médecins</h2>
-        <p><a href="/ajouterMedecin">Ajouter un médecin</a></p>
-        <p><a href="/rechercherMedecin">Rechercher médecin</a></p>
-        <p><a href="/liste-medecins">Tous les médecins</a></p>
+        <p><a href="/ajouter_medecin">Ajouter un médecin</a></p>
+        <p><a href="/rechercher_medecin">Trouver un médecin</a></p>
+        <p><a href="/liste_medecins">Tous les médecins</a></p>
     </div>
     <div class="rapports">
         <h2>Rapports</h2>
-        <p><a href="/creerRapport">Créer un rapport</a></p>
-        <p><a href="/rechercherRapport">Rechercher un rapport</a></p>
-        <p><a href="/modifierRapport">Modifier un rapport</a></p>
+        <p><a href="/creer_rapport">Créer un rapport</a></p>
+        <p><a href="/rechercher_rapport">Rechercher un rapport</a></p>
+        <p><a href="/modifier_rapport">Modifier un rapport</a></p>
     </div>
     <div class="monprofil">
         <h2>Mon profil</h2>
