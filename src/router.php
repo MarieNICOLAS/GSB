@@ -72,13 +72,10 @@ class Router
                 require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
                 break;
 
-            // case 'traitement_recherche_medecin':
-            //     $term = $_GET['search_term'];
-            //     var_dump($term);
-            //     $resultats = $medecin->searchMedecin($term);
-            //     var_dump($resultats);
-            //     echo json_encode($resultats);
-            //     break;
+            case 'traitement_recherche_medecin':
+                $result = $medecin->searchByName();
+                require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
+                break;
                 
 
 
