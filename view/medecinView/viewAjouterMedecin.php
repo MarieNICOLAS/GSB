@@ -1,4 +1,4 @@
-<h1>Ajouter médecin</h1>
+<?php $title = "Ajouter un médecin | GSB"; ?>
 
 <form action="/traitement-inscription-medecin" method="post">
     
