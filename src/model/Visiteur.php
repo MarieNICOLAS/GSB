@@ -59,6 +59,10 @@ class Visiteur{
         $stmt->execute();
     }
 
+    public function getIdVisiteur()
+    {
+        return $this->id;
+    }
     /**
      * Fonction pour l'authentification du visiteur lors de sa connexion à son compte
      */
@@ -73,9 +77,11 @@ class Visiteur{
         $stmt->bindParam(':motDePasse', $motDePasse);
 
         $stmt->execute();
+        $result = $stmt->fetch();
 
-        if ($stmt->rowCount() > 0)
+        if ($result)
         {
+            $_SESSION['user_id'] = $result['id'];
             return true;
         }
         else
