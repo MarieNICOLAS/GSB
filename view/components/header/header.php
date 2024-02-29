@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="/view/components/header/header.css">
     <link rel="stylesheet" href="/template/style.css">
     <link rel="stylesheet" href="/view/components/footer/footer.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title><?php echo $title;?></title>
 </head>
 <body>

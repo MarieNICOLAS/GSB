@@ -16,6 +16,7 @@ class Router
 
         $visiteur = new VisiteurController();
         $medecin = new MedecinController();
+        $rapport = new RapportController();
 
         switch ($request)
         {
@@ -76,8 +77,36 @@ class Router
                 $result = $medecin->searchByName();
                 require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
                 break;
+            
+            case 'creer_rapport':
+                require __DIR__ . '/../view/rapportView/creerRapport.php';
+                break;
+            
+            case 'traitement_ajout_rapport':
+                $rapport->createRapport();
+                break;
+            
+            case 'liste_rapports':
+                require __DIR__ . '/../view/rapportView/liste_rapport.php';
+                break;
+            
+            case 'rechercher_rapport':
+                require __DIR__ . '/../view/rapportView/selectionnerRapport.php';
+                break;
+            case 'traitement_recherche_rapport':
+                //$rapport->searchRapport();
+                break;
+            
+            case 'modifier_rapport':
+                require __DIR__ . '/../view/rapportView/modifierRapport.php';
+                break;
+            case 'traitement_modification_rapport':
+                //$rapport->updateRapport();
+                break;
                 
-
+            case 'voir_profil':
+                require __DIR__ . '/../view/visiteurView/monProfil.php';
+                break;
 
             default:
                 $title = 'Error 404 | GSB';
