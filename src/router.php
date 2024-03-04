@@ -63,6 +63,7 @@ class Router
 
             case 'traitement-inscription-medecin':
                 $medecin->createMedecin();
+                // require __DIR__ . '/../view/medecinView/viewAllMedecin.php';
                 break;
                 
             case 'liste_medecins':
@@ -77,6 +78,9 @@ class Router
                 $result = $medecin->searchByName();
                 require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
                 break;
+            
+            case 'informations_medecin':
+                
             
             case 'creer_rapport':
                 require __DIR__ . '/../view/rapportView/creerRapport.php';

@@ -15,4 +15,4 @@ $title = "Recherche médecin || GSB";?>
         </option>
     <?php endforeach;?>
 </datalist>
-<button type="submit">Rechercher</button>
+<form action="informations_medecin"></form><button type="submit">Rechercher</button>

@@ -26,7 +26,7 @@ class MedecinController{
             $medecin = new Medecin($nom, $prenom, $adresse, $telephone, $email, $specialiteComplementaire, $departement);
             $medecin->createMedecin();
 
-            header('Location: /liste-medecins');
+            header('Location: /liste_medecins');
             exit;
         }
     }
