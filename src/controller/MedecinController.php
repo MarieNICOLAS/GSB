@@ -30,7 +30,18 @@ class MedecinController{
             exit;
         }
     }
-
+    
+    public static function searchByName()
+    {
+        if (isset($_POST['nom'])) {
+            $medecins = Medecin::findByName($_POST['nom']);
+            if ($medecins) {
+                require __DIR__ . '/../../view/medecinView/viewInformationMedecin.php';
+            } else {
+                echo "Aucun médecin trouvé.";
+            }
+        }
+    }
     /**
      * Affiche la liste de tous les médecins
      */
@@ -59,28 +70,6 @@ class MedecinController{
 
     }
     
-    public static function searchByName()
-    {
-        if (isset($_POST['nom'])) {
-            $nom = $_POST['nom'];
-            $medecins = Medecin::findByName($nom);
-            if ($medecins) {
-                foreach($medecins as $medecin) { // Corrigé la variable dans foreach
-                    $mail = "<a href='mailto:" . $medecin['email'] . "'>" . $medecin['email'] . "</a>";
-                    echo "<li>";
-                    echo "<strong>Nom: </strong>" . $medecin['nom'] . "<br>";
-                    echo "<strong>Prenom:</strong>" . $medecin['prenom'] . "<br>";
-                    echo "<strong>Téléphone:</strong>" . $medecin['telephone'] . "<br>";
-                    echo "<strong>Adresse:</strong>" . $medecin['adresse'] . "<br>";
-                    echo "<strong>Email:</strong>" . $mail. "<br>";
-                    echo "<strong>Spécialité:</strong>" . $medecin['specialiteComplementaire'] . "<br>";
-                    echo "<strong>Départemnt:</strong>" . $medecin['departement'] . "<br>";
-                    echo "</li>";
-                }
-                return $medecin;
-            } 
-            return [];
-        } 
-    }
+    
     
 }
