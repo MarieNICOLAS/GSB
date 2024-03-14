@@ -50,9 +50,10 @@ class MedecinController{
         require __DIR__ . '/../../view/medecinView/viewAllMedecin.php';
     }
 
-    public function viewMedecin($id)
+    public function readMedecin($id)
     {
-        
+        $medecin = Medecin::findById($id);
+        return $medecin;
     }
 
     public function updateMedecin($id)

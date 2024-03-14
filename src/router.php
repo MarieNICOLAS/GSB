@@ -70,17 +70,15 @@ class Router
                 $medecin->listMedecin();
                 break;
             
-            case 'rechercher_medecin':
-                require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
-                break;
-
-            case 'traitement_recherche_medecin':
-                $result = $medecin->searchByName();
-                require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
-                break;
-            
-            case 'informations_medecin':
-                
+                case 'rechercher_medecin':
+                    require __DIR__ . '/../view/medecinView/viewRechercheMedecin.php';
+                    break;
+                    
+                case 'traitement_recherche_medecin':
+                    $id = $_POST['medecin-id'] ?? null;
+                    $medecin = $medecin->readMedecin($id);
+                    require __DIR__ . '/../view/medecinView/viewInformationMedecin.php';
+                    break;
             
             case 'creer_rapport':
                 require __DIR__ . '/../view/rapportView/creerRapport.php';
