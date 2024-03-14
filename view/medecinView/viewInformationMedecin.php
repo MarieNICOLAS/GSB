@@ -13,4 +13,5 @@ if ($medecin): ?>
     </ul>
 <?php else: ?>
     <p>Aucun médecin trouvé.</p>
+    <form action="/monCompte"><button type="submit">Retour</button></form>
 <?php endif; 

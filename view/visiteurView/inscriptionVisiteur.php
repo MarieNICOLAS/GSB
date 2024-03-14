@@ -32,3 +32,4 @@
     <br>
     <button type="submit">S'inscrire</button>
 </form>
+<form action="/monCompte"><button type="submit">Annuler</button></form>

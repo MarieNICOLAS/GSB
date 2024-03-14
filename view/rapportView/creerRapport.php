@@ -38,3 +38,4 @@ $title = "Nouveau rapport de visite | GSB";
     <br>
     <button type="submit">Créer un rapport</button>
 </form>
+<form action="/monCompte"><button type="submit">Annuler</button></form>

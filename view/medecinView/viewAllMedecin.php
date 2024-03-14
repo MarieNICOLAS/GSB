@@ -4,3 +4,4 @@
         <li><?php echo htmlspecialchars($medecin['nom']) . ' ' . htmlspecialchars($medecin['prenom']); ?></li>
     <?php endforeach; ?>
 </ul>
+<form action="/monCompte"><button type="submit">Retour</button></form>
