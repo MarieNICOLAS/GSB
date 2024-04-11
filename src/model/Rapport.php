@@ -30,10 +30,8 @@ class Rapport{
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':date', $this->date);
         $stmt->bindParam(':motif', $this->motif);
-        $stmt->bindParam(':bilan', $this->bilan);
-
-        $idVisiteur = $_SESSION['user_id'];
-        $stmt->bindParam(':idVisiteur', $idVisiteur);
+        $stmt->bindParam(':bilan', $this->bilan);        
+        $stmt->bindParam(':idVisiteur', $this->idVisiteur);
         $stmt->bindParam(':idMedecin', $this->idMedecin);
         $stmt->execute();
     }

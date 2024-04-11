@@ -89,7 +89,7 @@ class Router
                 break;
             
             case 'liste_rapports':
-                require __DIR__ . '/../view/rapportView/liste_rapport.php';
+                $rapport->listRapport(); 
                 break;
             
             case 'rechercher_rapport':
