@@ -25,6 +25,9 @@ class Rapport{
 
     public function createRapport()
     {
+        $this->idVisiteur = $_SESSION['user_id'];
+        $this->idMedecin = $this->idMedecin;
+
         $pdo = \GSB\Main::getPDO();
         $sql = "INSERT INTO rapport (date, motif, bilan, idVisiteur, idMedecin) VALUES (:date, :motif, :bilan, :idVisiteur, :idMedecin)";
         $stmt = $pdo->prepare($sql);
@@ -61,6 +64,14 @@ class Rapport{
         $stmt = $pdo->prepare($sql);
         $stmt->bindParam(':date', $date);
         $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    public static function findMedecinName($idMedecin)
+    {
+        $pdo = \GSB\Main::getPDO();
+        $sql = "SELECT medecin.nom AS medecin_nom FROM rapport JOIN medecin ON rapport.idMedecin = medecin.id";
+        $stmt = $pdo->query($sql);
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 

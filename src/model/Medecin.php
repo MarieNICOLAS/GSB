@@ -76,6 +76,15 @@ class Medecin{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
+    public static function getMedecinName($id)
+    {
+        $pdo = \GSB\Main::getPDO();
+        $sql = "SELECT nom FROM medecin WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute(['id' => $id]);
+        return $stmt->fetchColumn();
+    }
+
     /**
      * Fonction pour retrouver tous les médecins
      * 

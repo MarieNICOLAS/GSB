@@ -12,6 +12,7 @@ class RapportController
     private $idVisiteur;
     private $idMedecin;
 
+    
     public function createRapport()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -19,7 +20,7 @@ class RapportController
             $motif = $_POST['motif'];
             $bilan = $_POST['bilan'];
             $idVisiteur = $_SESSION['user_id'];
-            $idMedecin = $_POST['idMedecin'];
+            $idMedecin = $_POST['medecin'];
 
             $rapport = new Rapport($date, $motif, $bilan, $idVisiteur, $idMedecin);
             $rapport->createRapport();
@@ -29,6 +30,10 @@ class RapportController
         }
     }
 
+    public function displayAllRepports()
+    {
+        require __DIR__ . '/../../view/rapportView/liste_rapport.php';
+    }
     public function listRapport()
     {
         $rapports = Rapport::findAll();

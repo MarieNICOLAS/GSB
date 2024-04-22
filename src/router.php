@@ -89,7 +89,8 @@ class Router
                 break;
             
             case 'liste_rapports':
-                $rapport->listRapport(); 
+                $title = "Rapports | GSB";
+                $rapport->displayAllRepports(); 
                 break;
             
             case 'rechercher_rapport':

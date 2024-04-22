@@ -1,9 +1,30 @@
 <?php
-$title = "Rapports | GSB"; 
+
+use GSB\Model\Medecin;
+
+$title = "Rapports | GSB";
+$rapports = GSB\Model\Rapport::findAll();
 ?>
-<ul>
-    <?php foreach ($rapports as $rapport): ?>
-        <li><?php echo htmlspecialchars($rapport['motif']) . ' ' . htmlspecialchars($rapport['date']); ?></li>
-    <?php endforeach; ?>
-</ul>
-<form action="/monCompte"><button type="submit">Annuler</button></form>
+
+<table>
+    <thead>
+        <tr>
+            <th>Médecin</th>
+            <th>Date</th>
+            <th>Motif</th>
+        </tr>
+    </thead>
+    <tbody>
+        <?php foreach ($rapports as $rapport): 
+            $medecin = Medecin::getMedecinName($rapport['idMedecin']);
+            ?>
+            <tr>
+                <td><?= htmlspecialchars($medecin) ?></td>
+                <td><?= htmlspecialchars($rapport['date']) ?></td>
+                <td><?= htmlspecialchars($rapport['motif']) ?></td>
+            </tr>
+        <?php endforeach; ?>
+    </tbody>
+</table>
+
+<form action="/monCompte"><button type="submit">Retour</button></form>
