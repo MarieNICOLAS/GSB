@@ -23,6 +23,7 @@ class Rapport{
         $this->idMedecin = $idMedecin;
     }
 
+
     public function createRapport()
     {
         $pdo = \GSB\Main::getPDO();
@@ -36,6 +37,11 @@ class Rapport{
         $stmt->bindParam(':idVisiteur', $idVisiteur);
         $stmt->bindParam(':idMedecin', $this->idMedecin);
         $stmt->execute();
+    }
+
+    public function setIdVisiteur($idVisiteur)
+    {
+        $this->idVisiteur = $idVisiteur;
     }
 
     public static function findAll()
