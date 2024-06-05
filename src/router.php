@@ -108,14 +108,21 @@ class Router
                 require __DIR__ .  '/../view/rapportView/infoRapport.php';
                 break;
             
-            case 'modifier_rapport':
-                require __DIR__ . '/../view/rapportView/modifierRapport.php';
-                break;
-
-
-            case 'traitement_modification_rapport':
-                //$rapport->updateRapport();
-                break;
+                case 'modifier_rapport':
+                    if (isset($_GET['id'])) {
+                        $id = $_GET['id'];
+                        $rapportController = new \GSB\Controller\RapportController();
+                        $rapport = $rapportController->getRapportById($id);
+                        require __DIR__ . '/../view/rapportView/modifierRapport.php';
+                    } else {
+                        echo "ID du rapport manquant.";
+                    }
+                    break;
+                
+                case 'traitement_modification_rapport':
+                    $rapportController = new \GSB\Controller\RapportController();
+                    $rapportController->updateRapport();
+                    break;
                 
             case 'voir_profil':
                 require __DIR__ . '/../view/visiteurView/monProfil.php';

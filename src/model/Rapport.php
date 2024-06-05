@@ -71,11 +71,18 @@ class Rapport{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public static function updateRapport($id, Rapport $rapport)
-    {
-
+    public static function updateRapport($id, $date, $motif, $bilan, $idMedecin, $idVisiteur) {
+        $pdo = \GSB\Main::getPDO();
+        $sql = "UPDATE rapport SET date = :date, motif = :motif, bilan = :bilan, idMedecin = :idMedecin, idVisiteur = :idVisiteur WHERE id = :id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':date', $date);
+        $stmt->bindParam(':motif', $motif);
+        $stmt->bindParam(':bilan', $bilan);
+        $stmt->bindParam(':idMedecin', $idMedecin);
+        $stmt->bindParam(':idVisiteur', $idVisiteur);
+        $stmt->execute();
     }
-
     public static function deleteRapport($id)
     {
         $pdo = \GSB\Main::getPDO();

@@ -6,23 +6,24 @@ $title = "Rapports | GSB";
         <table>
             <thead>
                 <tr>
-                    <th>ID</th>
                     <th>Date</th>
                     <th>Motif</th>
                     <th>Bilan</th>
                     <th>ID Médecin</th>
                     <th>ID Visiteur</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($rapports as $rapport): ?>
                     <tr>
-                        <td><?php echo htmlspecialchars($rapport['id']); ?></td>
                         <td><?php echo htmlspecialchars($rapport['date']); ?></td>
                         <td><?php echo htmlspecialchars($rapport['motif']); ?></td>
                         <td><?php echo htmlspecialchars($rapport['bilan']); ?></td>
                         <td><?php echo htmlspecialchars($rapport['idMedecin']); ?></td>
-                        <td><?php echo htmlspecialchars($rapport['idVisiteur']); ?></td>
+                        <td>
+                            <a href="/modifier_rapport?id=<?php echo $rapport['id']; ?>">Modifier</a>
+                        </td>
                     </tr>
                 <?php endforeach; ?>
             </tbody>

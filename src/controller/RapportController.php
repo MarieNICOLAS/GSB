@@ -45,11 +45,25 @@ class RapportController
         return Rapport::findByID($id);
     }
 
-    public function updateRapport($id, $newData)
-    {
-        return Rapport::updateRapport($id, $newData);
+    public function getRapportById($id) {
+        return Rapport::findById($id);
     }
 
+    public function updateRapport() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $date = $_POST['date'];
+            $motif = $_POST['motif'];
+            $bilan = $_POST['bilan'];
+            $idMedecin = $_POST['idMedecin'];
+            $idVisiteur = $_POST['idVisiteur'];
+
+            Rapport::updateRapport($id, $date, $motif, $bilan, $idMedecin, $idVisiteur);
+
+            header('Location: /liste_rapport');
+            exit;
+        }
+    }
     public function deleteRapport($id)
     {
         return Rapport::deleteRapport($id);
