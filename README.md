@@ -79,3 +79,60 @@ champs, sélectionne les médicaments et les quantités offertes et valide
 10.Le système enregistre ces modifications
 
 
+
+GSB/
+    config/
+        config.php
+    src/
+        controller/
+            MedecinController.php
+            RapportController.php
+            VisiteurController.php
+            MedicamentController.php
+        model/
+            Medecin.php
+            Medicament.php
+            Rapport.php
+            Visiteur.php
+        main.php
+        router.php
+    template/
+        layout.php
+        style.css
+    vendor/
+        composer/
+        autoload.php
+    view/
+        components/
+            footer/
+                footer.php
+                footer.css
+            header/
+                header.php
+                header.css
+        css/
+            main.css
+        js/
+            search_medecin.js
+        medecinView/
+            viewAjouterMedecin.php
+            viewAllMedecin.php
+            viewInformationMedecin.php
+            viewRechercheMedecin.php
+        rapportView/
+            viewCreerRapport.php
+            viewListeRapport.php
+            viewModifierRapport.php
+            viewSelectionnerRapport.php
+        visiteurView/
+            viewInscriptionVisiteur.php
+            viewMonCompteVisiteur.php
+            viewMonProfilVisiteur.php
+            viewConnexionVisiteur.php
+        viewAccueil.php
+        viewError404.php
+    .htaccess
+    composer.json
+    composer.lock
+    index.php
+    README.md

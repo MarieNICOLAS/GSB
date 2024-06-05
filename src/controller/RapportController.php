@@ -25,19 +25,19 @@ class RapportController
             $rapport = new Rapport($date, $motif, $bilan, $idVisiteur, $idMedecin);
             $rapport->createRapport();
 
-            header('Location: /liste_rapports');
+            header('Location: /liste_rapport');
             exit;
         }
     }
 
-    public function displayAllRepports()
-    {
-        require __DIR__ . '/../../view/rapportView/liste_rapport.php';
+    public function searchRapportsByDate($date) {
+        return Rapport::findByDate($date);
     }
+
+    
     public function listRapport()
     {
-        $rapports = Rapport::findAll();
-        require __DIR__ . "/../../view/rapportView/liste_rapport.php";
+        return Rapport::findAll();
     }
 
     public function viewRapport($id)
@@ -45,23 +45,28 @@ class RapportController
         return Rapport::findByID($id);
     }
 
-    public function updateRapport($id, $newData)
-    {
-        return Rapport::updateRapport($id, $newData);
+    public function getRapportById($id) {
+        return Rapport::findById($id);
     }
 
+    public function updateRapport() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $id = $_POST['id'];
+            $date = $_POST['date'];
+            $motif = $_POST['motif'];
+            $bilan = $_POST['bilan'];
+            $idMedecin = $_POST['idMedecin'];
+            $idVisiteur = $_POST['idVisiteur'];
+
+            Rapport::updateRapport($id, $date, $motif, $bilan, $idMedecin, $idVisiteur);
+
+            header('Location: /liste_rapport');
+            exit;
+        }
+    }
     public function deleteRapport($id)
     {
         return Rapport::deleteRapport($id);
     }
 
-    public function searchRapportsByDate($date)
-    {
-        //return Rapport::findByDate($date);
-    }
-
-    public function ddMedicamentToRapport($rapportId, $medicamentId, $quantity)
-    {
-        //return Rapport::addMedicamentToRapport($rapportId, $medicamentId, $quantity);
-    }
 }
