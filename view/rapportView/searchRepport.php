@@ -7,3 +7,4 @@ $title = "Rechercher un rapport | GSB";?>
         <input type="date" id="date_rapport" name="date_rapport" required>
         <button type="submit">Rechercher</button>
 </form>
+<form action="/monCompte"><button type="submit">Retour</button></form>

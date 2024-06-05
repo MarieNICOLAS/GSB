@@ -90,7 +90,8 @@ class Router
                 $rapport->createRapport();
                 break;
             
-            case 'liste_rapports':
+            case 'liste_rapport':
+                $rapports = $rapport->listRapport();
                 require __DIR__ . '/../view/rapportView/liste_rapport.php';
                 break;
             

@@ -17,6 +17,7 @@ if (!isset($_SESSION['user_logged_in']) || $_SESSION['user_logged_in'] !== true)
     <div class="rapports">
         <h2>Rapports</h2>
         <p><a href="/creer_rapport">Créer un rapport</a></p>
+        <p><a href="/liste_rapport">Liste Rapports</a></p>
         <p><a href="/rechercher_rapport">Rechercher un rapport</a></p>
         <p><a href="/modifier_rapport">Modifier un rapport</a></p>
     </div>
