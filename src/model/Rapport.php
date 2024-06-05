@@ -62,7 +62,7 @@ class Rapport{
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
-    public function findByDate($date)
+    public static function findByDate($date)
     {
         $pdo = \GSB\Main::getPDO();
         $sql = "SELECT * FROM rapport WHERE date = :date";
@@ -71,7 +71,6 @@ class Rapport{
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-
     public static function updateRapport($id, Rapport $rapport)
     {
 

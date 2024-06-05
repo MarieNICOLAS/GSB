@@ -95,15 +95,23 @@ class Router
                 break;
             
             case 'rechercher_rapport':
-                require __DIR__ . '/../view/rapportView/selectionnerRapport.php';
+                require __DIR__ . '/../view/rapportView/searchRepport.php';
                 break;
+
             case 'traitement_recherche_rapport':
-                //$rapport->searchRapport();
+                if (isset($_POST['date_rapport'])) 
+                {
+                    $date = $_POST['date_rapport'];
+                }
+                $rapports = $rapport->searchRapportsByDate($date);
+                require __DIR__ .  '/../view/rapportView/infoRapport.php';
                 break;
             
             case 'modifier_rapport':
                 require __DIR__ . '/../view/rapportView/modifierRapport.php';
                 break;
+
+
             case 'traitement_modification_rapport':
                 //$rapport->updateRapport();
                 break;

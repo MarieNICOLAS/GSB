@@ -31,6 +31,10 @@ class RapportController
 
     }
 
+    public function searchRapportsByDate($date) {
+        return Rapport::findByDate($date);
+    }
+
     public function listRapport()
     {
         return Rapport::findAll();
@@ -51,10 +55,6 @@ class RapportController
         return Rapport::deleteRapport($id);
     }
 
-    public function searchRapportsByDate($date)
-    {
-        
-    }
 
     public function ddMedicamentToRapport($rapportId, $medicamentId, $quantity)
     {

@@ -1,7 +1,9 @@
 <?php 
-use GSB\Model\Rapport;
-$rapports = Rapport::findAll();
+
 $title = "Rechercher un rapport | GSB";?>
 
-<label for="rapport-input">Rechercher Rapport</label>
-
+<form action="/traitement_recherche_rapport" method="POST">
+        <label for="date_rapport">Date du Rapport :</label>
+        <input type="date" id="date_rapport" name="date_rapport" required>
+        <button type="submit">Rechercher</button>
+</form>
