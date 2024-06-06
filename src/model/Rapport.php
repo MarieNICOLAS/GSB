@@ -27,7 +27,7 @@ class Rapport{
     public function createRapport()
     {
         $this->idVisiteur = $_SESSION['user_id'];
-        $this->idMedecin = $this->idMedecin;
+        $this->idMedecin = $_POST['idMedecin'];
 
         $pdo = \GSB\Main::getPDO();
         $sql = "INSERT INTO rapport (date, motif, bilan, idVisiteur, idMedecin) VALUES (:date, :motif, :bilan, :idVisiteur, :idMedecin)";

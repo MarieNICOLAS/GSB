@@ -1,0 +1,198 @@
+-- Création de la base de données
+CREATE DATABASE IF NOT EXISTS gestion_visite_db;
+USE gestion_visite_db;
+
+-- Structure de la table `famille`
+DROP TABLE IF EXISTS famille;
+CREATE TABLE famille (
+  id INT NOT NULL AUTO_INCREMENT,
+  libelle VARCHAR(255) NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Déchargement des données de la table `famille`
+INSERT INTO famille (id, libelle) VALUES
+(1, 'Analgésiques'),
+(2, 'Anti-inflammatoires'),
+(3, 'Antibiotiques'),
+(4, 'Antiviaux'),
+(5, 'Bêta-bloquants'),
+(6, 'Dérivés nitrés'),
+(7, 'Diurétiques'),
+(8, 'Contraception'),
+(9, 'Antihistaminiques'),
+(10, 'Immunodépresseurs'),
+(11, 'Vitamines'),
+(12, 'Analgésiques'),
+(13, 'Anxiolytiques'),
+(14, 'Neuroleptiques'),
+(15, 'Antifongiques'),
+(16, 'Dermatologie'),
+(17, 'Psychiatrie');
+
+-- Structure de la table `medecin`
+DROP TABLE IF EXISTS medecin;
+CREATE TABLE medecin (
+  id INT NOT NULL AUTO_INCREMENT,
+  nom VARCHAR(255) DEFAULT NULL,
+  prenom VARCHAR(255) DEFAULT NULL,
+  adresse VARCHAR(255) DEFAULT NULL,
+  telephone VARCHAR(20) DEFAULT NULL,
+  email TEXT NOT NULL,
+  specialiteComplementaire VARCHAR(255) DEFAULT NULL,
+  departement VARCHAR(10) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Déchargement des données de la table `medecin`
+INSERT INTO medecin (id, nom, prenom, adresse, telephone, email, specialiteComplementaire, departement) VALUES
+(5, 'Dubois', 'Pierre', 'rue de la Forêt', '09 80 76 77 45', 'drbubois@hotmail.fr', 'Endocrinologue', NULL),
+(6, 'White', 'Kinder', 'rue bueno', '09 92 83 71 28 ', 'kinderwhite@bueno.fr', 'Dietetique', '78290'),
+(7, 'Kiwik', 'Paul', '45 rue du Général Foch', '08 78 65 34 52', 'drkiwik@gmail.com', 'Podologue', '67000'),
+(8, 'Luksenberg', 'Pauline', 'rue de Pouchy', '90888', 'pauline@gmail.com', 'Podologue', '78000'),
+(9, 'DelaBonne', 'Cerise', '420 rue des Cerisiers', '09 79 65 43 52', 'delabonnecerise@dr.fr', 'Orthoptiste', '58 670'),
+(10, 'Bulloyer', 'Yves', 'Chemin des Sorcières', '09 87 48 32 11', 'yvesbulloyer@medecin.fr', 'Podologue', '47 320'),
+(11, 'Saver', 'Maelys', '87 avenue Droit de l\'Homme', '06 24 18 47 32', 'maelyssaver@medecin.fr', 'Orthoptiste', '34 000'),
+(12, 'Doutriaux', 'Justine', '7 avenue Joseph Kessel', '01 30 43 46 97', 'justine_doutriaux@gmail.com', 'Dentiste', '78180'),
+(13, 'LeGolf', 'Quentin', '36 rue Distribil', '03 02 93 72 67', 'quentinlegolf@medecin.fr', 'Oncologie', '29 - Finis'),
+(14, 'Moulin', 'Bernard', '9bis rue Kelly Histon', '04 50 32 18 70', 'moulinbernard@gmail.com', 'Dentiste', '13001 - Ma'),
+(15, 'Morbier', 'Florine', '56 impasse du Fromage', '09 78 54 23 18', 'florine_morbier@medecin.fr', 'Pédiatrie', '03 000 - A'),
+(16, 'Maronne', 'Jean-Michel', '58 avenue de la République', '06 73 28 19 00', 'jm.maronne@medecin.com', 'Généraliste', '75011'),
+(17, 'Haddler', 'Remy', 'Hopital La Saint-Maritène', '01 54 38 10 87', 'remy_haddler@saint-maritene.fr', 'Chirurgie', '75017'),
+(18, 'Cartier', 'David', '66 avenue Richard Postel', '03 67 34 19 30', 'dcartier@gmail.com', 'Chirurgien esthétique', 'Yvelines'),
+(19, 'Laroche', 'Posey', '54 rue Eric Desblés', '09 78 65 47 32', 'larocheposey@lp.com', 'Dermatologie', '92 - Boulo');
+
+-- Structure de la table `medicament`
+DROP TABLE IF EXISTS medicament;
+CREATE TABLE medicament (
+  id INT NOT NULL AUTO_INCREMENT,
+  nomCommercial VARCHAR(255) DEFAULT NULL,
+  idFamille INT DEFAULT NULL,
+  composition TEXT,
+  effets TEXT,
+  contreindications TEXT,
+  PRIMARY KEY (id),
+  KEY fk_medicament_famille (idFamille)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Déchargement des données de la table `medicament`
+INSERT INTO medicament (id, nomCommercial, idFamille, composition, effets, contreindications) VALUES
+(1, 'Doliprane', 1, 'Paracétamol', 'Antidouleur', 'Femmes enceintes, Insuffisance hépathique'),
+(2, 'Lamictal', 17, 'Lamotrigine', 'Neuroleptique, régulateur d\'humeur', 'Alcools'),
+(3, 'Aspirine', 1, 'Acide acétylsalicylique', 'Traitement de la douleur, supprime la sensibilité à la douleur', 'Détresse respiratoire, vomissement, somnolence'),
+(4, 'Sectral', 5, 'Acébutolol', 'Diminution de la fréquence cardiaque, pression artérielle', 'Étourdissement, somnolence, fatigue, dépression, cauchemars'),
+(5, 'Kyleena', 8, 'Lévonorgestrel', 'Éviter une grossesse', 'Migraine, douleur utérine, absence de règles'),
+(6, 'Thalidomide', 10, NULL, NULL, NULL);
+
+-- Structure de la table `medicamentfamille`
+DROP TABLE IF EXISTS medicamentfamille;
+CREATE TABLE medicamentfamille (
+  id INT NOT NULL AUTO_INCREMENT,
+  libelle VARCHAR(255) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Structure de la table `offrir`
+DROP TABLE IF EXISTS offrir;
+CREATE TABLE offrir (
+  idRapport INT NOT NULL,
+  idMedicament INT NOT NULL,
+  quantite INT DEFAULT NULL,
+  PRIMARY KEY (idRapport, idMedicament),
+  KEY idMedicament (idMedicament)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Déchargement des données de la table `offrir`
+INSERT INTO offrir (idRapport, idMedicament, quantite) VALUES
+(1, 2, 300),
+(2, 1, 67),
+(3, 1, 70);
+
+-- Structure de la table `rapport`
+DROP TABLE IF EXISTS rapport;
+CREATE TABLE rapport (
+  id INT NOT NULL AUTO_INCREMENT,
+  date DATE DEFAULT NULL,
+  motif VARCHAR(255) DEFAULT NULL,
+  bilan TEXT,
+  idMedecin INT DEFAULT NULL,
+  idVisiteur INT DEFAULT NULL,
+  PRIMARY KEY (id),
+  KEY idMedecin (idMedecin),
+  KEY idVisiteur (idVisiteur)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Déchargement des données de la table `rapport`
+INSERT INTO rapport (id, date, motif, bilan, idMedecin, idVisiteur) VALUES
+(1, '2023-12-04', 'Dépression', 'Médoc', 7, NULL),
+(2, '2023-12-13', 'Vendre', 'Vendu', 5, NULL),
+(3, '2023-12-04', 'Blabla', 'Bloblo', 6, NULL),
+(4, NULL, 'Test', 'A voir', NULL, NULL),
+(5, '2022-12-01', 'Vente de doliprane', 'Vente concluse', NULL, NULL),
+(6, '2024-01-31', 'JPP', 's:ck ', NULL, NULL),
+(7, '2024-03-11', 'Test1', 'dksbmdibvc', NULL, NULL),
+(8, '2023-06-05', 'Suivi produit anti-douleur', 'RAS', NULL, NULL),
+(9, '2024-04-01', 'Effets indésirables - Aspirine', 'Les patients souffrants de douleurs ponctuelles présentent des plaques d\'allergie lorsqu\'ils sont sous lévothyrox', NULL, NULL),
+(10, '2024-04-01', 'Test', 'Cool', NULL, NULL),
+(11, '2024-04-01', 'Visite 1', 'Bilan Visite 1 ', 17, NULL),
+(12, '2024-04-12', 'Visite 2', 'Bilank visite 2', 16, NULL),
+(13, '2024-04-10', 'hyjchjyr', 'kutycr', 15, NULL),
+(14, '2024-04-05', 'Test 3', 'Ca craint', 10, 11),
+(15, '2024-06-12', 'La peau', 'Onn verra ', 6, 3);
+
+-- Structure de la table `visiteur`
+DROP TABLE IF EXISTS visiteur;
+CREATE TABLE visiteur (
+  id INT NOT NULL AUTO_INCREMENT,
+  nom VARCHAR(255) DEFAULT NULL,
+  prenom VARCHAR(255) DEFAULT NULL,
+  adresse VARCHAR(255) DEFAULT NULL,
+  telephone VARCHAR(20) DEFAULT NULL,
+  login VARCHAR(255) DEFAULT NULL,
+  motDePasse VARCHAR(255) DEFAULT NULL,
+  codePostal VARCHAR(10) DEFAULT NULL,
+  ville VARCHAR(255) DEFAULT NULL,
+  dateEmbauche DATE DEFAULT NULL,
+  premiereConnexion TINYINT(1) DEFAULT '1',
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- Déchargement des données de la table `visiteur`
+INSERT INTO visiteur (id, nom, prenom, adresse, telephone, login, motDePasse, codePostal, ville, dateEmbauche, premiereConnexion) VALUES
+(1, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(2, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1),
+(3, 'Bouchaud', 'Morgane', '14 impasse Orane', '06 43 28 19 00', 'morganebouchaud@gmail.com', 'totue', '78380', 'Bois d\'Arcy', '2023-08-06', 1),
+(4, 'Lemoine', 'Marc', 'Allée du Près', '04 20 42 04 20', 'marclemoine@gmail.com', 'marc', '67 210', 'Melin', '2023-12-16', 1),
+(5, 'Bouvier', 'Bertrand', 'Impasse des buissons', '07 56 43 26 78', 'bouvierbertrand@gmail.fr', 'bouvier', '65 000', 'Trouville', '2023-12-01', 1),
+(6, 'Jambon', 'Porcia', 'rue du Port', '04 30 39 10 11', 'jambon@hotmail.fr', 'jambon', '78 600', 'Rambouillet', '2023-11-29', 1),
+(7, 'Fraisier', 'Patrice', '78 rue du petit bois', '07 34 92 13 23', 'fraisier@patrice.pd', 'pd', '64230', 'Bullion', '2023-12-04', 1),
+(8, 'Poto', 'Michmich', 'rue de la Forêt', '98 273 180', 'poto@mich.fr', 'mdp', '98 361', 'Trouville', '2023-11-28', 1),
+(9, 'Dicaprio', 'Leo', 'rue des riches', '034 218 3489', 'leodicaprio@gmail.com', 'leo', '900000', 'Hollywood', '2023-12-08', 1),
+(10, 'Mouchard', 'Paul', '420 rue de la Bierre', '0000000000', 'mouchardPaul@bierre.fr', 'mdp', '90 2010', 'Boulogne', '2023-12-05', 1),
+(11, 'Ah', 'B', 'C', '98', 'k@ab.fr', 'mdp', '872 19', 'BLABLA', '2023-12-04', 1),
+(12, 'm', 'n', 'a', '982', 'mn@mn.fr', 'kk', '78902', 'Montigny', '2023-12-05', 1),
+(13, 'ml', 'lmsdf', 'zifnu', '91280329', 'lolo@gmail.fr', '$2y$10$dGf2h6lXeCDavBtBsVy0tORX4.DlekB5UFY6iwNWAbJ3DWA2z09UW', '2837', 'fksjn', '2023-12-05', 1),
+(14, 'kdj', 'fsoi', 'vsiufhgv', '092384U', 'lo@gmail.fr', '$2y$10$YxyVrSBO75Wo8iRGk1ew8e35OfVd/mQUo0XCZYXSKGJSNpM20R1JC', '782910', 'vilel', '2023-12-05', 1),
+(15, 'kdj', 'fsoi', 'vsiufhgv', '092384U', 'lo@gmail.fr', '$2y$10$2LzDfHLoRy6owECSvU0BjOtWvcq5EYETUAFDqISLfojtipETMy1yW', '782910', 'vilel', '2023-12-05', 1),
+(16, 'Blop', 'Bob', 'sous l\'ocean', '0987665432', 'bob@blop.fr', '$2y$10$FcYYmVIRD.s/LTmT3HsTbunWN5TPSWSF3lD5f3rhpFUCUany1mD/.', '80976', 'Bloby', '2023-12-05', 1),
+(17, 'A', 'B', 'C', 'D', 'E@E.COM', 'F', '09', 'V', '2024-01-01', 1),
+(18, 'Martin', 'Mathilde', '127 impasse du Trou', '06 45 38 21 96', 'mmartin@visiteur.com', 'martin', '91 007', 'Clamart', '2024-01-01', 1),
+(19, 'Smith', 'Willow', '8bis impasse du Bout', '01 02 30 40 18', 'smithwillow@gmail.com', 'ww', '42 000', 'Saint-Etienne', '2024-02-05', 1),
+(20, 'Sotis', 'Myo', '517 rue Des Petites Fleurs', '05 17 51 75 17', 'myo@sotis.com', 'myo', '78000', 'Versailles', '2020-02-07', 1),
+(21, 'Des', 'Ception', 'Impasse des Lâches', '06 66 66 66 66', 'deception@lache.com', 'lol', '78350', 'Magny', '2024-06-03', 1);
+
+-- Contraintes pour les tables déchargées
+
+-- Contraintes pour la table `medicament`
+ALTER TABLE medicament
+  ADD CONSTRAINT fk_medicament_famille FOREIGN KEY (idFamille) REFERENCES famille (id);
+
+-- Contraintes pour la table `offrir`
+ALTER TABLE offrir
+  ADD CONSTRAINT offrir_ibfk_1 FOREIGN KEY (idRapport) REFERENCES rapport (id),
+  ADD CONSTRAINT offrir_ibfk_2 FOREIGN KEY (idMedicament) REFERENCES medicament (id);
+
+-- Contraintes pour la table `rapport`
+ALTER TABLE rapport
+  ADD CONSTRAINT rapport_ibfk_2 FOREIGN KEY (idMedecin) REFERENCES medecin (id),
+  ADD CONSTRAINT rapport_ibfk_3 FOREIGN KEY (idVisiteur) REFERENCES visiteur (id);
