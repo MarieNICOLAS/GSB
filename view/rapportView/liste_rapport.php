@@ -13,9 +13,7 @@ $title = "Rapports | GSB";
                     <th>Date</th>
                     <th>Motif</th>
                     <th>Bilan</th>
-                    <th>ID Médecin</th>
-                    <th>ID Visiteur</th>
-                    <th>Actions</th>
+                    <th>Médecin</th>
                 </tr>
             </thead>
             <tbody>
@@ -25,7 +23,6 @@ $title = "Rapports | GSB";
                         <td><?= htmlspecialchars($rapport['motif']); ?></td>
                         <td><?= htmlspecialchars($rapport['bilan']); ?></td>
                         <td><?= htmlspecialchars($rapport['idMedecin']); ?></td>
-                        <td><?= htmlspecialchars($rapport['idVisiteur']); ?></td>
                         <td>
                             <a href="/modifier_rapport?id=<?= $rapport['id']; ?>">Modifier</a>
                         </td>
